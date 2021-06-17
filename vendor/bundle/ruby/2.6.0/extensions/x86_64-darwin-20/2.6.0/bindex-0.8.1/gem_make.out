@@ -1,0 +1,15 @@
+current directory: /Users/moomy/workspace/mofmofmof/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/moomy/.rbenv/versions/2.6.3/bin/ruby -I /Users/moomy/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20210617-48058-1dcfcfv.rb extconf.rb
+creating Makefile
+
+current directory: /Users/moomy/workspace/mofmofmof/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/moomy/workspace/mofmofmof/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/moomy/workspace/mofmofmof/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210617-48058-1agssf1/skiptrace/internal
