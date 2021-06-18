@@ -4,4 +4,14 @@
 <p>住所： <%= @property.address %></p>
 <p>築年数： <%= @property.years_old %></p>
 <p>備考： <%= @property.note %></p>
+
+<% n = 0 %>
+<h4>最寄り駅<%= n += 1 %></h4>
+<% @closest_stations.each do |cs| %>
+  <div class="station">
+    <p>路線名： <%= cs.line %></p>
+    <p>駅名： <%= cs.station %></p>
+    <p>徒歩分数： <%= cs.distance %>分</p>
+  </div>
+<% end %>
 <%= link_to 'Back to Home', properties_path %>

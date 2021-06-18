@@ -10,6 +10,8 @@ class PropertiesController < ApplicationController
   end
   def confirm
     @property = Property.new(property_params)
+    # @closest_stations = @property.closest_stations(property_params)
+    # binding.irb
     render :new if @property.invalid?
   end
   def create
@@ -24,6 +26,10 @@ class PropertiesController < ApplicationController
       end
     end
   end
+  def show
+    @closest_stations = @property.closest_stations
+  end
+
   def update
     if @property.update(property_params)
       redirect_to properties_path, notice:"アップデートしました！"
@@ -39,7 +45,7 @@ class PropertiesController < ApplicationController
   private
   def property_params
   params.require(:property).permit(:name, :price, :address, :years_old, :note,
-    closest_stations: [:line, :staion, :distance])
+    closest_stations: [:line, :staion, :distance, :property_id])
   end
   def set_property
   @property = Property.find(params[:id])

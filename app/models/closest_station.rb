@@ -1,3 +1,3 @@
 class ClosestStation < ApplicationRecord
-  belongs_to :property, dependent: :destroy
+  belongs_to :property
 end
