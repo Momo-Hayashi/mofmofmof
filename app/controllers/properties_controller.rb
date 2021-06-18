@@ -6,28 +6,40 @@ class PropertiesController < ApplicationController
   end
   def new
     @property = Property.new
+    2.times { @property.closest_stations.build }
+  end
+  def confirm
+    @property = Property.new(property_params)
+    render :new if @property.invalid?
   end
   def create
     @property = Property.new(property_params)
-    if @property.save
-      redirect_to properties_path, notice: "保存しました！"
-    else
+    if params[:back]
       render :new
+    else
+      if @property.save
+        redirect_to properties_path, notice: "保存しました！"
+      else
+        render :new
+      end
+    end
   end
   def update
-    if @property.updated
-      redirect_to properties_path, notice: "更新しました！"
+    if @property.update(property_params)
+      redirect_to properties_path, notice:"アップデートしました！"
     else
-    render :edit
+      render :edit
+    end
   end
   def destroy
     @property.destroy
     redirect_to properties_path, notice: "削除しました！"
   end
-  
+
   private
   def property_params
-  params.require(:property).permit(:name, :price, :address, :years_old, :note)
+  params.require(:property).permit(:name, :price, :address, :years_old, :note,
+    closest_stations: [:line, :staion, :distance])
   end
   def set_property
   @property = Property.find(params[:id])

@@ -1,0 +1,31 @@
+<h1>以下の内容で登録しますか？</h1>
+<%= form_with(model: @property, local:true, url:properties_path ) do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :price %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :years_old %>
+  <%= f.hidden_field :note %>
+  <%= f.hidden_field :line %>
+  <%= f.hidden_field :station %>
+  <%= f.hidden_field :distance %>
+
+  <h3>物件詳細</h3>
+  <p>物件名： <%= @property.name %></p>
+  <p>賃料： <%= @property.price %>円</p>
+  <p>住所： <%= @property.address %></p>
+  <p>築年数： <%= @property.years_old %>年</p>
+  <p>備考： <%= @property.note %></p>
+
+  <h4>最寄り駅1</h4>
+  <p>路線名： <%= @property.closest_stations.first.station %></p>
+  <p>駅名： <%= @property.closest_stations.first.station %></p>
+  <p>徒歩分数： <%= @property.closest_stations.first.distance %>分</p>
+
+  <h4>最寄り駅2</h4>
+  <p>路線名： <%= @property.closest_stations.second.line %></p>
+  <p>駅名： <%= @property.closest_stations.second.station %></p>
+  <p>徒歩分数： <%= @property.closest_stations.second.distance %>分</p>
+
+  <%= f.submit "登録する" %>
+  <%= f.submit "戻る", name: 'back' %>
+<% end %>
