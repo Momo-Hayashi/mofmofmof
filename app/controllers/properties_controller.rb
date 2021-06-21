@@ -25,7 +25,7 @@ class PropertiesController < ApplicationController
       render :new
     else
       if @property.save
-        redirect_to properties_path, notice: "保存しました！"
+        redirect_to properties_path, notice: "物件を登録しました。#{@property.name}の最寄駅は#{@property.closest_stations.count}件です"
       else
         2.times { @property.closest_stations.build }
         render :new
@@ -44,7 +44,7 @@ class PropertiesController < ApplicationController
   def update
     @closest_stations = @property.closest_stations
     if @property.update(property_params)
-      redirect_to properties_path, notice:"アップデートしました！"
+      redirect_to properties_path, notice: "物件を編集しました。#{@property.name}の最寄駅は#{@property.closest_stations.count}件です"
     else
       render :edit
     end
