@@ -3,12 +3,13 @@
     <div id="error_explanation">
       <h2><%= @property.errors.count %>件のエラーがあります。</h2>
       <ul>
-        <% @property.error.full_messages.each do |msg| %>
+        <% @property.errors.full_messages.each do |msg| %>
           <li><%= msg =%></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
   <p><%= f.label :物件名 %></p>
   <p><%= f.text_field :name %></p>
   <p><%= f.label :賃料 %></p>
@@ -21,12 +22,12 @@
   <p><%= f.text_field :note %></p>
 
   <%= f.fields_for :closest_stations do |cs| %>
-  <h3>最寄り駅<%= cs.index + 1 %></h3>
-    <p><%= cs.label :line, '路線' %></p>
+    <h3>最寄り駅<%= cs.index + 1 %></h3>
+    <p><%= cs.label :路線 %></p>
     <p><%= cs.text_field :line %></p>
-    <p><%= cs.label :station, '駅名' %></p>
+    <p><%= cs.label :駅名 %></p>
     <p><%= cs.text_field :station %></p>
-    <p><%= cs.label :distance, '徒歩分数' %></p>
+    <p><%= cs.label :徒歩分数 %></p>
     <p><%= cs.text_field :distance %>分</p>
   <% end %>
   <p><%= f.submit %></p>
